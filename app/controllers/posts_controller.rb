@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @post = Post.new
   end
 
   def create
-    #@user = User.new(username: params[:username], email: params[:email], password: params[:password])
-    @post = Post.new(post_params)
+    # Creates post through user
+    @post = current_user.posts.new(post_params)
 
       if @post.save
           redirect_to new_user_path
