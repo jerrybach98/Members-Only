@@ -1,6 +1,6 @@
 <% @users.each do |user|%>
   <% user.posts.each do |post| %>
-    <%= post.post_name %>
+    <%= post.post.title %>
   <% end %>
   <% if user_signed_in? %>
     <%= user.username.capitalize, post_path(user.id) %>
